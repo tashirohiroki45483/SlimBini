@@ -1,7 +1,8 @@
 class Product < ApplicationRecord
   
-  has_many :munu_products, dependent: :destroy
+  has_many :menu_products, dependent: :destroy
   belongs_to :user
   belongs_to :genre
   
+  has_one_attached :image
 end
