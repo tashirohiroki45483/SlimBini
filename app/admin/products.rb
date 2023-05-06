@@ -9,8 +9,8 @@ ActiveAdmin.register Product do
    
   form do |f|
     f.inputs "Product Details" do
-      f.input :user_id
-      f.input :genre_id
+      f.input :user
+      f.input :genre
       f.input :name
       f.input :description
       f.input :calories
@@ -23,18 +23,18 @@ ActiveAdmin.register Product do
   end
   
   show do
-  attributes_table do
-    row :user
-    row :name
-    row :description
-    row :calories
-    row :protein
-    row :fat
-    row :carbohydrate
-    row :image do |product|
-      image_tag url_for(product.image), size: "200x200" if product.image.attached?
+    attributes_table do
+      row :user
+      row :name
+      row :description
+      row :calories
+      row :protein
+      row :fat
+      row :carbohydrate
+      row :image do |product|
+        image_tag url_for(product.image), size: "200x200" if product.image.attached?
+      end
     end
-  end
   end
 
   #
