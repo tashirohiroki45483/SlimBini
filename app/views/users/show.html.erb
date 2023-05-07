@@ -1,4 +1,7 @@
 <div class="container">
+  <% if notice %>
+  <p class="notice"><%= notice %></p>
+  <% end %>
   <div class="row my-1 mt-5">
     <div class="col">
       <h5><strong>登録情報</strong></h5>
@@ -11,7 +14,7 @@
           <td class="table-secondary border-dark">プロフ画像</td>
           <td class="border-dark">
             <% if @user.image.present? %>
-              <%= image_tag @user.image, size: "200x200" %>
+              <%= image_tag @user.image, size: "100x100" %>
             <% else %>
               <p>プロフィール画像がありません</p>
             <% end %>
