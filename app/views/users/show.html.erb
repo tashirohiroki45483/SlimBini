@@ -1,15 +1,23 @@
 <div class="container">
   <div class="row my-1 mt-5">
-    <div class="col-md-2">
+    <div class="col">
       <h5><strong>登録情報</strong></h5>
-    </div>
-    <div class="col-md-10">
-      <p><%= link_to "編集する", edit_user_path, class: 'btn btn-success' %></p>
     </div>
   </div>
   <div class="row">
     <div class="col-7">
       <table class="table table-bordered">
+        <tr>
+          <td class="table-secondary border-dark">プロフ画像</td>
+          <td class="border-dark">
+            <% if @user.image.present? %>
+              <%= image_tag @user.image, size: "200x200" %>
+            <% else %>
+              <p>プロフィール画像がありません</p>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
         <tr>
           <td class="table-secondary border-dark">名前</td>
           <td class="border-dark"><%= @user.name %></td>
@@ -25,9 +33,14 @@
       </table>
     </div>
   </div>
-    <div class="row my-1 mt-5">
-      <div class="col-md-10">
-        <p><%= link_to "目標摂取カロリーを設定する", set_goal_calorie_user_path, class: 'btn btn-success' %></p>
-      </div>
+  <% if @user.name != "guestuser" %>
+  <div class="row mt-5">
+    <div class="col-2">
+      <p><%= link_to "編集する", edit_user_registration_path, class: 'btn btn-success' %></p>
+    </div>
+    <div class="col-10">
+      <p><%= link_to "目標摂取カロリーを設定する", set_goal_calorie_user_path, class: 'btn btn-success' %></p>
+    </div>
   </div>
+  <% end %>
 </div>
