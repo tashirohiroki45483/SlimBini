@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   
+  devise_scope :user do #ゲストログイン
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
+  
   resources :users do
     member do
       get 'set_goal_calorie'
