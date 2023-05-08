@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <h4><span class="bg-light px-3 pb-1">商品一覧</span></h4>
+    <%= link_to new_product_path do %>
+      <p>商品を登録する</p>
+    <% end %>
+  </div>
+  <div class="row">
+  </div>
+    <div class="col">
+      <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">画像</th>
+            <th scope="col">商品名</th>
+            <th scope="col">カロリー</th>
+            <th scope="col">タンパク質</th>
+            <th scope="col">脂質</th>
+            <th scope="col">脂質</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <% @products.each do |product| %>
+  　　    <tbody>
+          <tr>
+          <%# @product.imageがないときは@product.genre.imageを表示する　%>
+            <td><%= image_tag product.image.present? ? product.image : product.genre.image, size: "50x50" %></td>
+            <td><%= product.name %></td>
+            <td><%= product.calories %></td>
+            <td><%= product.protein %></td>
+            <td><%= product.fat %></td>
+            <td><%= product.carbohydrate %></td>
+            <td><%= link_to "詳細", product_path(product.id), class: 'btn btn-success' %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

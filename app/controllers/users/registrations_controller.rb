@@ -45,6 +45,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
+  
+  # サインアップ後にマイページに移動
+  def after_sign_up_path_for(resource)
+    user_path(resource) 
+  end
 
   #editパラメーター
   def configure_account_update_params
@@ -60,9 +65,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end  
   
-  def after_update_path_for(resource) #会員情報編集後マイページに遷移
+  #会員情報編集後マイページに遷移
+  def after_update_path_for(resource) 
     user_path(resource)
   end
+  
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
   #   super(resource)
