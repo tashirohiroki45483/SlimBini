@@ -11,7 +11,7 @@
       <% @menus.each do |menu| %>
         <tr>
           <td><%= menu.meal_type %></td>
-          <td><%= link_to '詳細', menu_path(menu) %></td>
+          <td><%= menu.products %></td>
         </tr>
       <% end %>
     </tbody>

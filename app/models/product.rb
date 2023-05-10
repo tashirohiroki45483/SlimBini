@@ -1,7 +1,6 @@
 class Product < ApplicationRecord
 
-  has_many :menu_products, dependent: :destroy
-  has_many :menus, through: :menu_products
+  has_many :menus
   belongs_to :user, optional: true
   belongs_to :genre
 

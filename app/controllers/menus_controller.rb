@@ -1,7 +1,7 @@
 class MenusController < ApplicationController
 
   def index
-    @menus = current_user.menus.all
+    @menus = current_user.daily_menus.menus.all
   end
 
   def show
