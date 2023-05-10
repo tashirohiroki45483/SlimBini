@@ -68,29 +68,15 @@ ActiveRecord::Schema.define(version: 2023_05_05_141635) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "daily_menu_id"
+    t.integer "menu_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "daily_menu_id"
-    t.text "comment"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "daily_groups", force: :cascade do |t|
     t.integer "menu_id"
-    t.integer "daily_menu_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "daily_menus", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
+    t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -108,26 +94,17 @@ ActiveRecord::Schema.define(version: 2023_05_05_141635) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "daily_menu_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "menu_products", force: :cascade do |t|
     t.integer "menu_id"
-    t.integer "product_id"
-    t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "menus", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "total_calories"
-    t.float "total_protein"
-    t.float "total_fat"
-    t.float "total_carbohydrate"
+    t.integer "product_id"
     t.string "meal_type"
+    t.integer "quantity"
+    t.integer "daily_menu_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

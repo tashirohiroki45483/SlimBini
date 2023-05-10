@@ -1,8 +1,9 @@
 class Menu < ApplicationRecord
 
-  has_many :menu_products, dependent: :destroy
-  has_many :daily_groups, dependent: :destroy
-  has_many :products, through: :menu_products
+  has_many :bookmarks, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  belongs_to :product
   belongs_to :user
 
 end

@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
   def index
-    @q = Product.ransack(params[:q])
+    @q = Product.ransack(params[:q]) #ransackで検索された商品を表示する
     @products = @q.result(distinct: true)
   end
 

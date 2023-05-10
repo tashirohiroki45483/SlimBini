@@ -9,7 +9,6 @@ class CreateProducts < ActiveRecord::Migration[6.1]
       t.float :protein
       t.float :fat
       t.float :carbohydrate
-
       t.timestamps
     end
   end
