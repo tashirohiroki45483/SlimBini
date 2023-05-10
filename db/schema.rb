@@ -128,7 +128,6 @@ ActiveRecord::Schema.define(version: 2023_05_05_141635) do
     t.float "total_fat"
     t.float "total_carbohydrate"
     t.string "meal_type"
-    t.string "integer"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

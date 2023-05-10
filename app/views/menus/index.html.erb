@@ -1,0 +1,21 @@
+<h1>献立一覧</h1>
+<% if @menus.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th>献立名</th>
+        <th>詳細</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @menus.each do |menu| %>
+        <tr>
+          <td><%= menu.meal_type %></td>
+          <td><%= link_to '詳細', menu_path(menu) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>献立がありません。</p>
+<% end %>

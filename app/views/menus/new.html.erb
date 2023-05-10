@@ -1,0 +1,21 @@
+<div class="container">
+  <h4 class="mb-5"><span class="bg-light px-3 pb-1">献立新規登録</span></h4>
+  <div class="row">
+    <div class="mx-auto">
+      <%= form_with model: @menu do |f| %>
+        <table>
+
+          <tr>
+            <td style="padding-bottom: 10px;">ミールタイプ</td>
+            <td style="padding-bottom: 10px;"><%= f.select :meal_type, [ ["朝食","朝食"], ["昼食", "昼食"], ["夕食", "夕食" ] ], prompt: "職業を選択してください" %></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td><%= f.submit '新規登録', class: 'btn btn-success' %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

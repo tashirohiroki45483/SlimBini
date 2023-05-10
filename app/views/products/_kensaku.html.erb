@@ -1,0 +1,16 @@
+<div class="card">
+  <h7 class="card-title card-header text-center bg-info text-white">商品検索</h7>
+  <div class="card-body">
+  <%= search_form_for @q do |f| %>
+    <%= f.label :name_cont, "商品名" %><br>
+    <%= f.search_field :name_cont %>
+    <%= f.label :calories_gteq, "カロリー（以上）" %>
+    <%= f.number_field :calories_gteq %>
+    <%= f.label :calories_lteq, "カロリー（以下）" %>
+    <%= f.number_field :calories_lteq %>
+    <%= f.label :user_id_eq, "自分の投稿した商品" %>
+    <%= f.check_box :user_id_eq, {checked: false}, current_user.id, nil %>
+    <%= f.submit "検索" %>
+  <% end %>
+  </div>
+</div>
