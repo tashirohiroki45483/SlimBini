@@ -1,2 +1,0 @@
-class DailyMenusController < ApplicationController
-end

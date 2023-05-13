@@ -1,25 +1,64 @@
-<h1>献立詳細: <%= @menu.meal_type %></h1>
-<table>
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>数量</th>
-      <th>カロリー</th>
-      <th>タンパク質</th>
-      <th>脂質</th>
-      <th>炭水化物</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @menu.menu_products.each do |menu_product| %>
-      <tr>
-        <td><%= menu_product.product.name %></td>
-        <td><%= menu_product.quantity %></td>
-        <td><%= menu_product.product.calories %></td>
-        <td><%= menu_product.product.protein %></td>
-        <td><%= menu_product.product.fat %></td>
-        <td><%= menu_product.product.carbohydrate %></td>
-      </tr>
+<div class="container">
+  <div class="row">
+    <h4 class="mb-5"><span class="bg-light px-3 pb-1">献立詳細</span></h4>
+  </div>
+    <div class="row">
+    <div class="col-md-12">
+      <h5>献立タイトル: <%= @menu.title %></h5>
+      <p>献立説明: <%= @menu.description %></p>
+    </div>
+  </div>
+  <div class="row">
+    <% if @menu.menu_products.present? %>
+      <% total_calories = 0 %>
+      <% @menu.menu_products.group_by(&:meal_type).each do |meal_type, menu_products| %>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-header">
+              <h2 class="mb-0"><%= meal_type %></h2>
+            </div>
+            <table class="table">
+              <tbody>
+                <% meal_type_calories = 0 %>
+                <% menu_products.each do |menu_product| %>
+                  <tr>
+                    <td>
+                      <%= link_to product_path(menu_product.product_id) do %>
+                        <%= image_tag(menu_product.product.image.present? ? menu_product.product.image : menu_product.product.genre.image, size: "50x50") %>
+                      <% end %>
+                    </td>
+                    <td><%= menu_product.product.name %></td>
+                    <td><%= menu_product.product.calories %> kcal</td>
+                  </tr>
+                  <% meal_type_calories += menu_product.product.calories %>
+                  <% total_calories += menu_product.product.calories %>
+                <% end %>
+                <tr>
+                  <td colspan="2"><strong>合計カロリー:</strong></td>
+                  <td colspan="2"><span class="badge badge-primary"><strong><%= meal_type_calories %> kcal</strong></span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>この献立には商品が追加されていません</p>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>全てのカロリー合計: <span class="badge badge-primary"><%= total_calories %> kcal</span></h3>
+      <h3>目標摂取カロリー: <span class="badge badge-info"><%= current_user.goal_calorie %> kcal</span></h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <% if @menu.user_id == current_user.id %>
+        <%= link_to '編集', edit_menu_path(@menu), class: 'btn btn-success' %>
+        <%= link_to '削除', menu_path(@menu), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      <% end %>
+    </div>
+  </div>
+</div>

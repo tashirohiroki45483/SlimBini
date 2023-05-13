@@ -35,10 +35,9 @@
             <td><%= product.carbohydrate %> g</td>
             <td><%= link_to "詳細", product_path(product.id), class: 'btn btn-success' %></td>
             <td>
-              <%= form_with(url: menu_products_path, local: true) do |form| %>
+              <%= form_with(model: @menu_product, url: menu_products_path, local: true) do |form| %>
               <%= form.hidden_field :product_id, value: product.id %>
               <%= form.select :meal_type, [['朝食に追加', '朝食'], ['昼食に追加', '昼食'], ['夕食に追加', '夕食']], class: 'form-select form-select-sm' %>
-              <%= form.number_field :quantity, value: 1, min: 1, class: 'form-control form-control-sm' %>
               <%= form.submit "献立に追加", class: "btn btn-primary btn-sm" %>
               <% end %>
             </td>

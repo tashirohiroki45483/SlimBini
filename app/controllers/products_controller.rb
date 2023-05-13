@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   def index
     @q = Product.ransack(params[:q]) #ransackで検索された商品を表示する
     @products = @q.result(distinct: true)
+    @menu_product = MenuProduct.new
   end
 
   def new
@@ -10,7 +11,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = current_user.products.build(product_params) #current_userに紐づく新しいProductが作成される
+    @product = current_user.products.build(product_params) #current_userに紐づく新しいProductが作成する
     if @product.save
       redirect_to product_path(@product.id)
     else
@@ -20,7 +21,6 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @menu_product = MenuProduct
   end
 
   def edit
