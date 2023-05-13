@@ -22,9 +22,10 @@ Rails.application.routes.draw do
   end
 
   resources :products
+
   resources :menus
+  
   resources :menu_products
-  resources :daily_menus
 
 end
 
