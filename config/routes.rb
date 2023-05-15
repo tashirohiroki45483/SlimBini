@@ -23,8 +23,11 @@ Rails.application.routes.draw do
 
   resources :products
 
-  resources :menus
-  
+  resources :menus do
+    resource :bookmarks, only: [:create, :destroy]
+    resource :likes, only: [:create, :destroy]
+  end
+
   resources :menu_products
 
 end

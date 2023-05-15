@@ -1,0 +1,11 @@
+<% if menu.liked_by?(current_user) %>
+  <%= link_to menu_likes_path(menu), method: :delete, remote: true do %>
+  <i class="fas fa-heart" style="color: #fe1010;"></i>
+  <span class="text-red"><%= menu.likes.count %></span>
+  <% end %>
+<% else %>
+  <%= link_to menu_likes_path(menu), method: :post, remote: true do %>
+  <i class="far fa-heart"></i>
+  <span class="text-red"><%= menu.likes.count %></span>
+  <% end %>
+<% end %>
