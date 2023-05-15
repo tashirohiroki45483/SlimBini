@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <h4 class="mb-5"><span class="bg-light px-3 pb-1">ブックマークした献立</span></h4>
+  </div>
+  <div class="row">
+    <% if @bookmarked_menus.present? %>
+      <% @bookmarked_menus.each do |menu| %>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal"><%= menu.title %></h4>
+            </div>
+            <div class="card-body">
+              <% menu.products.each do |product| %>
+                <%= image_tag product.image.present? ? product.image : product.genre.image, size: "50x50" %>
+              <% end %>
+              <h5 class="card-title pricing-card-title"><%= menu.products.sum(&:calories) %> kcal<small class="text-muted">/ total</small></h5>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li><%= menu.description %></li>
+              </ul>
+              <%= link_to "詳細", menu_path(menu.id), class: "btn  btn-primary" %>
+              <%= render "bookmarks/bookmarks", menu: menu %>
+              <%= render "likes/likes", menu: menu %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>献立がありません。</p>
+    <% end %>
+  </div>
+</div>

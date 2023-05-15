@@ -5,7 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :bookmarks, dependent: :destroy
+  has_many :bookmarked_menus, through: :bookmarks, source: :menu
   has_many :likes, dependent: :destroy
+  has_many :liked_menus, through: :likes, source: :menu
   has_many :comments, dependent: :destroy
   has_many :products, dependent: :destroy
   has_many :menus, dependent: :destroy
