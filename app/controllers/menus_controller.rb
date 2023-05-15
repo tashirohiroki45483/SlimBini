@@ -1,6 +1,7 @@
 class MenusController < ApplicationController
   def index
-    @menus = Menu.all
+    @q = Menu.ransack(params[:q]) #ransackで検索された献立を表示する
+    @menus = @q.result(distinct: true)
   end
 
   def show
