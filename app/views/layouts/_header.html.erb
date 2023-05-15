@@ -7,29 +7,31 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-info' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to '献立を作成する', new_menu_path, class: 'nav-link text-info' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to '献立一覧', menus_path, class: 'nav-link text-info' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'いいねした献立', likes_users_path(current_user), class: 'nav-link text-info' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'ブックマークした献立', bookmarks_users_path(current_user), class: 'nav-link text-info' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to '商品一覧', products_path, class: 'nav-link text-info' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to '商品登録', new_product_path, class: 'nav-link text-info' %>
-        </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-info" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          献立
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item"><%= link_to '献立を作成する', new_menu_path, class: 'nav-link text-info' %></a>
+          <a class="dropdown-item"><%= link_to '献立一覧', menus_path, class: 'nav-link text-info' %></a>
+          <a class="dropdown-item"><%= link_to 'いいねした献立', likes_users_path(current_user), class: 'nav-link text-info' %></a>
+          <a class="dropdown-item"><%= link_to 'ブックマークした献立', bookmarks_users_path(current_user), class: 'nav-link text-info' %></a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-info" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          商品
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item"><%= link_to '商品一覧', products_path, class: 'nav-link text-info' %></a>
+          <a class="dropdown-item"><%= link_to '商品登録', new_product_path, class: 'nav-link text-info' %></a>
+        </div>
+      </li>
         <li class="nav-item">
           <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-info' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-info' %>
         </li>
         <% else %>
         <li class="nav-item">
@@ -43,10 +45,9 @@
         </li>
       <% end %>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+  </div>
+  <div class="text-info">
+    ようこそ<%= current_user.name %>さん！
   </div>
 </nav>
 </header>
