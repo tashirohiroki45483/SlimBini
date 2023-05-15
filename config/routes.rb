@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   end
 
   resources :users do
+    get 'likes', on: :collection
+    get 'bookmarks', on: :collection
     member do
       get 'set_goal_calorie'
       patch 'update_goal_calorie'
