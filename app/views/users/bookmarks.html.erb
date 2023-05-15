@@ -19,8 +19,12 @@
                 <li><%= menu.description %></li>
               </ul>
               <%= link_to "詳細", menu_path(menu.id), class: "btn  btn-primary" %>
-              <%= render "bookmarks/bookmarks", menu: menu %>
-              <%= render "likes/likes", menu: menu %>
+              <div class="bookmark_btn_<%= menu.id %>">
+                <%= render "bookmarks/bookmarks", menu: menu %>
+              </div>
+              <div class="like_btn_<%= menu.id %>">
+                <%= render "likes/likes", menu: menu %>
+              </div>
             </div>
           </div>
         </div>
