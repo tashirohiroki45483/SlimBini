@@ -9,7 +9,7 @@
     </div>
   </div>
     <div class="row">
-    <div class="col-md-12">
+    <div class="col-12">
       <h5>献立タイトル: <%= @menu.title %></h5>
       <p>献立説明: <%= @menu.description %></p>
     </div>
@@ -58,12 +58,10 @@
       <h3>目標摂取カロリー: <span class="badge badge-info"><%= current_user.goal_calorie %> kcal</span></h3>
     </div>
   </div>
-
   <div class="row">
     <div class="col-md-12">
       <% if @menu.user_id == current_user.id %>
-        <%= link_to '編集', edit_menu_path(@menu), class: 'btn btn-success' %>
-        <%= link_to '削除', menu_path(@menu), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        <%= link_to 'この献立を削除する', menu_path(@menu), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
       <% end %>
     </div>
   </div>

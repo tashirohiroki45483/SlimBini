@@ -47,7 +47,9 @@
     </ul>
   </div>
   <div class="text-info">
-    ようこそ<%= current_user.name %>さん！
+    <% if user_signed_in? %>
+      ようこそ<%= current_user.name %>さん！
+    <% end %>
   </div>
 </nav>
 </header>

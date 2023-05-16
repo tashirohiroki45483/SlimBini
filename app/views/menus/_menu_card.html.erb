@@ -1,9 +1,13 @@
 <div class="col-md-4">
   <div class="card mb-4 shadow-sm">
     <div class="card-header">
-      <h4 class="my-0 font-weight-normal"><%= menu.title %></h4>
+      <p class="my-0 font-weight-normal">
+        <%= image_tag(menu.user.image.present? ? menu.user.image : 'default_image.png', size: "30x30") %>
+        <%= menu.user.name %>
+      </p>
     </div>
     <div class="card-body">
+      <div><%= menu.title %></div>
       <% menu.products.each do |product| %>
         <%= image_tag product.image.present? ? product.image : product.genre.image, size: "50x50" %>
       <% end %>
@@ -11,12 +15,18 @@
       <ul class="list-unstyled mt-3 mb-4">
         <li><%= menu.description %></li>
       </ul>
-      <%= link_to "詳細", menu_path(menu.id), class: "btn  btn-primary" %>
-      <div class="bookmark_btn_<%= menu.id %>">
-        <%= render "bookmarks/bookmarks", menu: menu %>
-      </div>
-      <div class="like_btn_<%= menu.id %>">
-        <%= render "likes/likes", menu: menu %>
+      <div class="row">
+        <div class="col">
+          <%= link_to "詳細", menu_path(menu.id), class: "btn  btn-primary" %>
+        </div>
+        <div class="mr-1">
+          <div class="bookmark_btn_<%= menu.id %>">
+            <%= render "bookmarks/bookmarks", menu: menu %>
+          </div>
+        </div>
+          <div class="like_btn_<%= menu.id %>">
+            <%= render "likes/likes", menu: menu %>
+          </div>
       </div>
     </div>
   </div>

@@ -2,6 +2,9 @@
   <div class="row">
     <h4 class="mb-5"><span class="bg-light px-3 pb-1">献立新規登録</span></h4>
   </div>
+  <div class="row">
+    <%= link_to "商品一覧", products_path, class: "btn btn-primary" %>
+  </div>
   <%= form_with model: @menu, url: menus_path, method: :post do |form| %>
     <div class="row">
       <% if @menu_products.present? %>
@@ -51,15 +54,15 @@
     <div class="row">
       <div class="col-md-12">
         <div class="form-group">
-          <%= form.label :title, "献立タイトル" %>
+          <%= form.label :title, "タイトルをつける" %>
           <%= form.text_field :title %>
         </div>
         <div class="form-group">
-          <%= form.label :description, "献立説明" %>
+          <%= form.label :description, "説明をつける" %>
           <%= form.text_area :description %>
         </div>
       </div>
     </div>
-    <%= form.submit '投稿確認へ', class: 'btn btn-primary' %>
+    <%= form.submit '投稿する', class: 'btn btn-primary' %>
   <% end %>
 </div>

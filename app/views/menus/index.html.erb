@@ -11,7 +11,7 @@
       <div class="row">
         <% if @menus.present? %>
           <% @menus.each do |menu| %>
-          <%= render 'menus/menu_card', menu: menu %>
+            <%= render 'menus/menu_card', menu: menu %>
           <% end %>
         <% else %>
           <p>献立がありません。</p>

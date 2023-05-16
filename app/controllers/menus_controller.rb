@@ -14,7 +14,6 @@ class MenusController < ApplicationController
   end
 
   def create
-    # menuにパラメータを入れてnewする
     menu = Menu.new(menu_params)
     menu.user_id = current_user.id
     if menu.save
