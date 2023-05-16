@@ -1,0 +1,5 @@
+<%= form_with(model: [menu, Comment.new], local: false) do |f| %>
+  <%= f.text_area :comment, rows: '5', placeholder: "" %>
+  <%= f.submit "送信" %>
+<% end %>
+

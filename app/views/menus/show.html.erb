@@ -4,8 +4,10 @@
     <div class="bookmark_btn_<%= @menu.id %>">
       <%= render "bookmarks/bookmarks", menu: @menu %>
     </div>
-    <div class="like_btn_<%= @menu.id %>">
-      <%= render "likes/likes", menu: @menu %>
+    <div class="ml-2">
+      <div class="like_btn_<%= @menu.id %>">
+        <%= render "likes/likes", menu: @menu %>
+      </div>
     </div>
   </div>
     <div class="row">
@@ -56,6 +58,16 @@
     <div class="col-md-12">
       <h3>全てのカロリー合計: <span class="badge badge-primary"><%= total_calories %> kcal</span></h3>
       <h3>目標摂取カロリー: <span class="badge badge-info"><%= current_user.goal_calorie %> kcal</span></h3>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div id="comments_area">
+      <%= render 'comments/comments_area', menu: @menu %>
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      <%= render 'comments/comment_create', menu: @menu %>
     </div>
   </div>
   <div class="row">
