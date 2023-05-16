@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comment = @menu.comments.create(comment_params)
     @comment.user = current_user
     if @comment.save
-      redirect_to menu_path(@menu)
+      
     else
       # error handling
     end
@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     @menu = Menu.find(params[:menu_id])
     @comment = @menu.comments.find(params[:id])
     @comment.destroy
-    redirect_to menu_path(@menu)
+    
   end
 
   private
