@@ -25,11 +25,12 @@
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
-- CSSライブラリ : Bootstrap 
+- CSSライブラリ : Bootstrap
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
 ## 使用素材
+- https://kotonohaworks.com/free-icons/
 - https://www.ac-illust.com/
 - 管理者の投稿するデータはこのサイトの使い方を学ぶためのダミーデータです、フリーのイラストとダミーの商品名とダミーの栄養素を使った商品を登録します。
 - ユーザーが商品登録する際は自分で撮影した画像を使用する
