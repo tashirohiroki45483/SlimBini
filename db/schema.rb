@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2023_05_17_024834) do
   end
 
   create_table "menu_products", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "menu_id"
     t.integer "product_id"
     t.string "meal_type"
