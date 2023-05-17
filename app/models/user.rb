@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :commented_menus, through: :menu_comments, source: :menu
   has_many :products, dependent: :destroy
   has_many :menus, dependent: :destroy
+  has_many :menu_products
 
   has_one_attached :image
 

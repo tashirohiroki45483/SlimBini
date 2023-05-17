@@ -2,6 +2,7 @@ class MenuProductsController < ApplicationController
 
   def create
     @menu_product = MenuProduct.new(menu_product_params)
+    @menu_product.user = current_user
     if @menu_product.save
       redirect_to new_menu_path
     else
@@ -12,7 +13,7 @@ class MenuProductsController < ApplicationController
   private
 
   def menu_product_params
-    params.require(:menu_product).permit(:product_id, :meal_type)
+    params.require(:menu_product).permit(:user_id, :product_id, :meal_type)
   end
 
 end

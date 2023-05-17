@@ -10,15 +10,14 @@ class MenusController < ApplicationController
 
   def new
     @menu = Menu.new
-    @menu_products = MenuProduct.where("menu_id is null")
+    @menu_products = current_user.menu_products.where("menu_id is null")
   end
 
   def create
-    menu = Menu.new(menu_params)
-    menu.user_id = current_user.id
+    menu = current_user.menus.new(menu_params)
     if menu.save
       # menu_idの存在しないMenuProductのmenu_idを更新する
-      MenuProduct.where("menu_id is null").update(menu_id: menu.id)
+      current_user.menu_products.where("menu_id is null").update_all(menu_id: menu.id)
       redirect_to menus_path
     else
       redirect_to products_path
