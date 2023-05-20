@@ -60,13 +60,13 @@
       <h3>目標摂取カロリー: <span class="badge badge-info"><%= current_user.goal_calorie %> kcal</span></h3>
     </div>
   </div>
-  <div class="row mt-5">
+  <div class="mt-5">
     <div id="comments_area">
       <%= render 'menu_comments/comments_area', menu: @menu %>
     </div>
   </div>
-  <div class="row">
-    <div>
+  <div class="">
+    <div class="input-group">
       <%= render 'menu_comments/comment_create', menu: @menu %>
     </div>
   </div>
