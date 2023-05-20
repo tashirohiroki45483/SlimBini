@@ -1,0 +1,39 @@
+<div class="container">
+  <h5 class=" mb-4"><strong>目標摂取カロリーを設定</strong></h5>
+  <%= form_with url: update_goal_calorie_user_path, method: :patch do |f| %>
+  <table class="mx-auto">
+    <tr>
+      <td><%= f.label :weight, "体重" %></td>
+      <td><%= f.number_field :weight, placeholder: "体重を入力" %>(kg)</td>
+    </tr>
+    <tr>
+      <td><%= f.label :height, "身長" %></td>
+      <td><%= f.number_field :height, placeholder: "身長を入力" %>(cm)</td>
+    </tr>
+    <tr>
+      <td><%= f.label :age, "年齢" %></td>
+      <td><%= f.number_field :age, placeholder: "年齢を入力" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :gender, "性別" %></td>
+      <td><%= f.select :gender, [["男性", "male"], ["女性", "female"]] %></td>
+    </tr>
+    <tr>
+      <td class=""><%= f.label :activity_level, "活動レベル" %></td>
+      <td><%= f.select :activity_level, [["ほとんど運動しない", 1.2], ["週1〜3回程度の運動", 1.375], ["週3〜5回程度の運動", 1.55], ["週6〜7回激しい運動", 1.725], ["非常に激しい運動", 1.9]] %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.submit "計算", class: 'btn btn-success' %></td>
+    </tr>
+  </table>
+  <% end %>
+  <p class="alert alert-info mt-3">
+    この計算結果はミフリン・セント・ジョール方程式に基づいています。
+    計算には入力した体重、身長、年齢、性別、活動レベルが考慮されますが保存はされません。
+    目標摂取カロリーには週に0.5kg減量を目指すと仮定した場合のものが設定されます。<br>
+    これらの数値はあくまで目安であり、個々の基礎代謝や身体状況により異なります。
+    実際のダイエットや食事制限を行う前に、医師や栄養士と相談することを強く推奨します。
+    また、極端なカロリー制限は健康に悪影響を及ぼす可能性がありますので、適切なカロリー摂取を心掛けてください。
+  </p>
+</div>
