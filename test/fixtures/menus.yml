@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  total_calories: 1
+  total_protein: 1.5
+  total_fat: 1.5
+  total_carbohydrate: 1.5
+  meal_type: MyString
+  integer: MyString
+
+two:
+  total_calories: 1
+  total_protein: 1.5
+  total_fat: 1.5
+  total_carbohydrate: 1.5
+  meal_type: MyString
+  integer: MyString

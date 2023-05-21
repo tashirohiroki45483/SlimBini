@@ -1,0 +1,2 @@
+module MenuProductsHelper
+end

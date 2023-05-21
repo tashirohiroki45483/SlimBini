@@ -1,0 +1,9 @@
+<% if menu.bookmarked_by?(current_user) %>
+  <%= link_to menu_bookmarks_path(menu), method: :delete, remote: true do %>
+    <i class="fas fa-bookmark" style="color: #005cfa;"></i>
+  <% end %>
+<% else %>
+  <%= link_to menu_bookmarks_path(menu), method: :post, remote: true do %>
+    <i class="far fa-bookmark"></i>
+  <% end %>
+<% end %>

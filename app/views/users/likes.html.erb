@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <h4 class="mb-5"><span class="bg-light px-3 pb-1">いいねした献立</span></h4>
+  </div>
+  <div class="row">
+    <% if @liked_menus.present? %>
+      <% @liked_menus.each do |menu| %>
+        <%= render 'menus/menu_card', menu: menu %>
+      <% end %>
+    <% else %>
+      <p>献立がありません。</p>
+    <% end %>
+  </div>
+</div>

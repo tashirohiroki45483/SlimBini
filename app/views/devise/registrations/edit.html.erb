@@ -1,0 +1,71 @@
+<div class="container mt-5">
+  <h4><span class="bg-light px-3 pb-1">会員情報編集</span></h4>
+  <div class="row">
+    <div class="mx-auto">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  　　<%= render "devise/shared/error_messages", resource: resource %>
+        <table>
+          <tr>
+            <td style="padding-bottom: 10px;">プロフ画像</td>
+            <td style="padding-bottom: 10px;"><%= f.label :プロフィール画像 %><br />
+              <%= f.file_field :image %>
+              <% if resource.image.present? %>
+              <div class="mt-3">現在のプロフィール画像：<br />
+              <%= image_tag @user.image, size: "100x100" %>
+              </div>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 10px;">名前</td>
+            <td style="padding-bottom: 10px;"><%= f.text_field :name, :size=>"30" %></td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 10px;">メールアドレス</td>
+            <td style="padding-bottom: 10px;"><%= f.text_field :email, :size=>"30" %></td>
+          </tr>
+          <tr>
+            <td>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 10px; padding-right: 10px;">目標摂取カロリー</td>
+            <td style="padding-bottom: 10px;"><%= f.text_field :goal_calorie, :size=>"30" %></td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 20px;">
+              <%= f.label :パスワード %>
+            </td>
+            <td style="padding-bottom: 10px;">
+              <%= f.password_field :password, autocomplete: "new-password", :size=>"30" %><br>
+              <% if @minimum_password_length %>
+                <%= @minimum_password_length %> 文字以上
+              <% end %>
+              (変更しない場合は空欄のまま)
+            </td>
+          </tr>
+          <tr>
+            <td><%= f.label :パスワードの確認 %></td>
+            <td style="padding-bottom: 10px;"><%= f.password_field :password_confirmation, autocomplete: "new-password", :size=>"30" %></td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 20px;"><%= f.label :現在のパスワード %></td>
+            <td style="padding-bottom: 10px;">
+              <%= f.password_field :current_password, autocomplete: "current-password", :size=>"30" %><br>
+              (変更の確認のため、現在のパスワードが必要です)
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= f.submit '変更を保存', class: 'btn btn-success' %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to "戻る", :back %>
+</div>
