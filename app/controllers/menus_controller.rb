@@ -1,4 +1,7 @@
 class MenusController < ApplicationController
+  before_action :authenticate_user! #ログインしていない場合はログインページに遷移させる
+  before_action :ensure_guest_user, only: [:destroy] #ゲストログイン制限 削除機能制限
+
   def index
     @q = Menu.ransack(params[:q]) #ransackで検索された献立を表示する
     @menus = @q.result(distinct: true)
@@ -34,6 +37,15 @@ class MenusController < ApplicationController
 
   def menu_params
     params.require(:menu).permit(:title, :description)
+  end
+
+  #ゲストログイン制限
+  def ensure_guest_user
+    @user = current_user
+    if @user.name == "guestuser"
+      flash[:notice] = 'ゲストユーザーは献立を削除できません。'
+      redirect_to request.referer
+    end
   end
 
 end
