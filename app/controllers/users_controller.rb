@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :ensure_guest_user, only: [:edit] # アクション前にゲストユーザーか確認
+  before_action :authenticate_user! #ログインしていない場合はログインページに遷移させる
+  before_action :ensure_guest_user, only: [:set_goal_calorie] # ゲストユーザーは遷移できない
 
   def show
     @user = current_user
@@ -30,6 +31,17 @@ class UsersController < ApplicationController
     goal_calorie = tdee - 500 # 週に0.5kg減量を目指すと仮定し、目標摂取カロリーを計算
     current_user.update(goal_calorie: goal_calorie)
     redirect_to user_path, notice: '目標摂取カロリーが更新されました！'
+  end
+
+  protected
+
+  #ゲストログイン制限 目標摂取カロリー設定画面に行けない
+  def ensure_guest_user
+    @user = current_user
+    if @user.name == "guestuser"
+      flash[:notice] = 'ゲストユーザーは目標摂取カロリー設定画面へ遷移できません。'
+      redirect_to user_path(current_user)
+    end
   end
 
 end
