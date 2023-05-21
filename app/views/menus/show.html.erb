@@ -1,4 +1,5 @@
-<div class="container">
+<div class="container shadow">
+  <p class="notice"><%= notice %></p>
   <div class="row">
     <h4 class="mb-5"><span class="bg-light px-3 pb-1">献立詳細</span></h4>
     <div class="bookmark_btn_<%= @menu.id %>">
@@ -60,14 +61,14 @@
       <h3>目標摂取カロリー: <span class="badge badge-info"><%= current_user.goal_calorie %> kcal</span></h3>
     </div>
   </div>
-  <div class="row mt-5">
+  <div class="mt-5">
     <div id="comments_area">
-      <%= render 'comments/comments_area', menu: @menu %>
+      <%= render 'menu_comments/comments_area', menu: @menu %>
     </div>
   </div>
-  <div class="row">
-    <div>
-      <%= render 'comments/comment_create', menu: @menu %>
+  <div class="">
+    <div class="input-group">
+      <%= render 'menu_comments/comment_create', menu: @menu %>
     </div>
   </div>
   <div class="row">

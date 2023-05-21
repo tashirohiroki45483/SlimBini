@@ -8,10 +8,11 @@ class User < ApplicationRecord
   has_many :bookmarked_menus, through: :bookmarks, source: :menu
   has_many :likes, dependent: :destroy
   has_many :liked_menus, through: :likes, source: :menu
-  has_many :comments, dependent: :destroy
-  has_many :commented_menus, through: :comments, source: :menu
+  has_many :menu_comments, dependent: :destroy
+  has_many :commented_menus, through: :menu_comments, source: :menu
   has_many :products, dependent: :destroy
   has_many :menus, dependent: :destroy
+  has_many :menu_products
 
   has_one_attached :image
 

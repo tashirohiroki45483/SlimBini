@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user! #ログインしていない場合はログインページに遷移させる
 
   def create
     @menu = Menu.find(params[:menu_id])

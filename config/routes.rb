@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :menus do
     resource :bookmarks, only: [:create, :destroy]
     resource :likes, only: [:create, :destroy]
-    resources :comments, only: [:create, :destroy]
+    resources :menu_comments, only: [:create, :destroy]
   end
 
   resources :menu_products
