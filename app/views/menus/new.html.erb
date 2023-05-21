@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h4 class="mb-5"><span class="bg-light px-3 pb-1">献立新規登録</span></h4>
+    <h4 class="mb-5"><span class="bg-light px-3 pb-1">献立新規作成</span></h4>
   </div>
   <div class="row">
     <%= link_to "商品一覧", products_path, class: "btn btn-primary" %>
@@ -27,7 +27,7 @@
                       </td>
                       <td><%= menu.product.name %></td>
                       <td><%= menu.product.calories %> kcal</td>
-                      <td><%= link_to '削除', menu_path(menu.id), method: :delete, class: "btn btn-danger btn-sm" %></td>
+                      <td><%= link_to '削除', menu_product_path(menu.id), method: :delete, class: "btn btn-danger btn-sm" %></td>
                     </tr>
                     <% meal_type_calories += menu.product.calories %>
                     <% total_calories += menu.product.calories %>
