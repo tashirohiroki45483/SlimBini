@@ -1,0 +1,27 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">コメント</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% menu.menu_comments.each do |menu_comment| %>
+    <tr>
+      <td>
+        <%= link_to user_path(menu_comment.user) do%>
+        <%= image_tag(menu_comment.user.image.present? ? menu.user.image : 'default_image.png', size: "30x30") %>
+        <%= menu_comment.user.name %>
+        <% end %>
+      </td>
+      <td><%= menu_comment.comment %></td>
+      <td class="menu_comment_<%= menu_comment.menu.id %>">
+        <% if menu_comment.user == current_user %>
+        <%= link_to "Destroy", menu_menu_comment_path(menu, menu_comment), class: "btn btn-sm btn-danger", remote: true, method: :delete %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <h4 class="mb-5"><span class="bg-light px-3 pb-1">献立新規作成</span></h4>
+  </div>
+  <div class="row">
+    <%= link_to "商品一覧", products_path, class: "btn btn-primary" %>
+  </div>
+  <%= form_with model: @menu, url: menus_path, method: :post do |form| %>
+    <div class="row">
+      <% if @menu_products.present? %>
+        <% total_calories = 0 %>
+        <% @menu_products.group_by(&:meal_type).each do |meal_type, menus| %>
+          <div class="col-md-4">
+            <div class="card mb-4">
+              <div class="card-header">
+                <h2 class="mb-0"><%= meal_type %></h2>
+              </div>
+              <table class="table">
+                <tbody>
+                  <% meal_type_calories = 0 %>
+                  <% menus.each do |menu| %>
+                    <tr>
+                      <td>
+                        <%= link_to product_path(menu.product_id) do %>
+                          <%= image_tag(menu.product.image.present? ? menu.product.image : menu.product.genre.image, size: "50x50") %>
+                        <% end %>
+                      </td>
+                      <td><%= menu.product.name %></td>
+                      <td><%= menu.product.calories %> kcal</td>
+                      <td><%= link_to '削除', menu_product_path(menu.id), method: :delete, class: "btn btn-danger btn-sm" %></td>
+                    </tr>
+                    <% meal_type_calories += menu.product.calories %>
+                    <% total_calories += menu.product.calories %>
+                  <% end %>
+                  <tr>
+                    <td colspan="2"><strong>合計カロリー:</strong></td>
+                    <td colspan="2"><span class="badge badge-primary"><strong><%= meal_type_calories %> kcal</strong></span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p>商品一覧から商品を献立に追加してください</p>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h3>全てのカロリー合計: <span class="badge badge-primary"><%= total_calories %> kcal</span></h3>
+        <h3>目標摂取カロリー: <span class="badge badge-info"><%= current_user.goal_calorie %> kcal</span></h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= form.label :title, "タイトルをつける" %>
+          <%= form.text_field :title %>
+        </div>
+        <div class="form-group">
+          <%= form.label :description, "説明をつける" %>
+          <%= form.text_area :description %>
+        </div>
+      </div>
+    </div>
+    <%= form.submit '投稿する', class: 'btn btn-primary' %>
+  <% end %>
+</div>
