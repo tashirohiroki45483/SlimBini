@@ -18,7 +18,7 @@
       <td><%= menu_comment.comment %></td>
       <td class="menu_comment_<%= menu_comment.menu.id %>">
         <% if menu_comment.user == current_user %>
-        <%= link_to "Destroy", menu_menu_comment_path(menu, menu_comment), class: "btn btn-sm btn-danger", remote: true, method: :delete %>
+        <%= link_to "削除", menu_menu_comment_path(menu, menu_comment), class: "btn btn-sm btn-danger", remote: true, method: :delete %>
         <% end %>
       </td>
     </tr>
