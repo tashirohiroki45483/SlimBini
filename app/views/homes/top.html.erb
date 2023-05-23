@@ -5,7 +5,7 @@
     <br>忙しい現代人の健康をサポートします。</h5>
   </div>
   <div class="row">
-    <%= link_to '今すぐ献立を作成', new_menu_path, class: "btn btn-info mt-3" %>
+    <%= link_to '献立を作成', new_menu_path, class: "btn btn-info mt-3" %>
   </div>
   <div class="row mt-2">
     <h5 class="pt-5">アカウントを作成し、SlimBini を使い始めましょう。</h5>
@@ -13,6 +13,17 @@
   <div class="row">
     <%= link_to 'アカウント作成', new_user_registration_path, class: "btn btn-info mt-3" %>
   </div>
-  <p>testtest</p>
+  <div class="row mt-5">
+    <h5>新着の献立</h5>
+  </div>
+  <div class="row mt-2">
+    <% if @menus.present? %>
+      <% @menus.each do |menu| %>
+        <%= render 'menus/menu_card', menu: menu %>
+      <% end %>
+    <% else %>
+      <p>献立がありません。</p>
+    <% end %>
+  </div>
 </div>
 

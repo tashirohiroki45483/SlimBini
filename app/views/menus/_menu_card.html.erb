@@ -1,13 +1,10 @@
-<div class="col-md-4">
+<div class="col-4">
   <div class="card mb-4 shadow-sm">
     <div class="card-header">
-      <p class="my-0 font-weight-normal">
-        <%= image_tag(menu.user.image.present? ? menu.user.image : 'default_image.png', size: "30x30") %>
-        <%= menu.user.name %>
-      </p>
+      <%= image_tag(menu.user.image.present? ? menu.user.image : 'default_image.png', size: "30x30") %>
+      <%= menu.user.name %>
     </div>
     <div class="card-body">
-      <div><%= menu.title %></div>
       <% menu.products.each do |product| %>
         <%= image_tag product.image.present? ? product.image : product.genre.image, size: "50x50" %>
       <% end %>
@@ -18,6 +15,10 @@
       <div class="row">
         <div class="col">
           <%= link_to "詳細", menu_path(menu.id), class: "btn  btn-primary" %>
+        </div>
+        <div class="mr-2">
+          <i class="far fa-comment"></i>
+          <%= menu.menu_comments.count %>
         </div>
         <div class="mr-1">
           <div class="bookmark_btn_<%= menu.id %>">
