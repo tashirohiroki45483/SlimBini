@@ -15,3 +15,8 @@ ja:
         current_sign_in_at: 現在のログイン時刻
         current_sign_in_ip: 現在のログインIPアドレス
         email: メールアドレス
+        name: 名前
+      product:
+        genre: ジャンル
+        calories: カロリー
+        name: 商品名

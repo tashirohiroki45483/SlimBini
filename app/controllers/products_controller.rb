@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :ensure_guest_user, only: [:destroy, :edit] #ゲストログイン制限 削除・編集機能制限
 
   def index
-    @q = Product.ransack(params[:q]) #ransackで検索された商品を表示する
+    @q = Product.ransack(params[:q]) #ransackで検索された商品を表示
     @products = @q.result(distinct: true)
     @menu_product = MenuProduct.new
   end
@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = current_user.products.build(product_params) #current_userに紐づく新しいProductが作成する
+    @product = current_user.products.build(product_params) #current_userに紐づく新しいProductが作成
     if @product.save
       redirect_to product_path(@product.id)
     else
@@ -33,6 +33,18 @@ class ProductsController < ApplicationController
     product = Product.find(params[:id])
     product.update(product_params)
     redirect_to product_path(product.id)
+  end
+
+  def destroy
+    @product = Product.find(params[:id])
+    if @product.user == current_user # 現在ログインしているユーザーが商品を投稿したユーザーと同じであることを確認
+      @product.destroy
+      flash[:notice] = '商品を削除しました'
+      redirect_to products_path
+    else
+      flash[:alert] = '商品を削除できませんでした'
+      redirect_to products_path
+    end
   end
 
   private

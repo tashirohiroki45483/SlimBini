@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161
     end
     tdee = bmr * activity_level # 総エネルギー消費量を計算
-    goal_calorie = tdee - 500 # 週に0.5kg減量を目指すと仮定し、目標摂取カロリーを計算
+    goal_calorie = tdee - 240 # 月に1kg減量を目指すと仮定し、目標摂取カロリーを計算
     current_user.update(goal_calorie: goal_calorie)
     redirect_to user_path, notice: '目標摂取カロリーが更新されました！'
   end

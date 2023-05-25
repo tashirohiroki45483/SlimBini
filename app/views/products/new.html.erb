@@ -1,14 +1,14 @@
-<% if @product.errors.any? %>
+<div class="container">
+  <% if @product.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+    <h2><%= pluralize(@product.errors.count, "件のエラーが発生したため") %>保存されませんでした。</h2>
     <ul>
       <% @product.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>
   </div>
-<% end %>
-<div class="container">
+  <% end %>
   <h4 class="mb-5"><span class="bg-light px-3 pb-1">商品新規登録</span></h4>
   <div class="row">
     <div class="mx-auto">
@@ -32,19 +32,22 @@
           </tr>
           <tr>
             <td style="padding-bottom: 10px;">カロリー</td>
-            <td style="padding-bottom: 10px;"><%= f.text_field :calories, :size=>"30" %></td>
+            <td style="padding-bottom: 10px;"><%= f.text_field :calories, :size=>"30" %>kcal</td>
           </tr>
           <tr>
             <td style="padding-bottom: 10px;">タンパク質</td>
-            <td style="padding-bottom: 10px;"><%= f.text_field :protein, :size=>"30" %></td>
+            <td style="padding-bottom: 10px;"><%= f.text_field :protein, :size=>"30" %>g</td>
+            <td></td>
           </tr>
           <tr>
             <td style="padding-bottom: 10px;">脂質</td>
-            <td style="padding-bottom: 10px;"><%= f.text_field :fat, :size=>"30" %></td>
+            <td style="padding-bottom: 10px;"><%= f.text_field :fat, :size=>"30" %>g</td>
+            <td></td>
           </tr>
           <tr>
             <td style="padding-bottom: 10px;">炭水化物</td>
-            <td style="padding-bottom: 10px;"><%= f.text_field :carbohydrate, :size=>"30" %></td>
+            <td style="padding-bottom: 10px;"><%= f.text_field :carbohydrate, :size=>"30" %>g</td>
+            <td></td>
           </tr>
           <tr>
             <td></td>
@@ -54,4 +57,5 @@
       <% end %>
     </div>
   </div>
+  <%= link_to "一覧に戻る", products_path %>
 </div>
