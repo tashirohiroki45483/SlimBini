@@ -1,6 +1,4 @@
-<div class="input-group">
 <%= form_with(model: [menu, MenuComment.new], local: false) do |f| %>
-  <%= f.text_area :comment, placeholder: "", class: 'form-control' %>
-  <span><%= f.submit "送信", class: '' %></span>
+  <%= f.text_area :comment, placeholder: "コメントをここに", class: 'form-control' %>
+  <span><%= f.submit "送信する", class: 'btn btn-info mt-2 float-right' %></span>
 <% end %>
-</div>
