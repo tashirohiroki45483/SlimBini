@@ -17,13 +17,21 @@ class MenusController < ApplicationController
   end
 
   def create
-    menu = current_user.menus.new(menu_params)
-    if menu.save
-      # menu_idの存在しないMenuProductのmenu_idを更新する
-      current_user.menu_products.where("menu_id is null").update_all(menu_id: menu.id)
-      redirect_to menus_path
+    @menu = current_user.menus.new(menu_params)
+    @menu_products = current_user.menu_products.where("menu_id is null")
+    # menup_productsが存在しない場合、新規献立作成にリダイレクトさせる
+    if @menu_products.empty?
+      flash[:notice] = '献立を投稿する前に商品を追加してください。'
+      redirect_to new_menu_path
+      return #メソッドの実行を終了させる
+    end
+    if @menu.save
+      # menu_idがnullの全てのMenuProductsのmenu_idを更新します
+      @menu_products.update_all(menu_id: @menu.id)
+      flash[:notice] = '献立が投稿されました。'
+      redirect_to menu_path(@menu)
     else
-      redirect_to products_path
+      render :new
     end
   end
 

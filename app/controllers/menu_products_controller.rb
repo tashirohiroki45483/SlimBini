@@ -12,9 +12,9 @@ class MenuProductsController < ApplicationController
   end
 
   def destroy
-  @menu_product = MenuProduct.find(params[:id])
-  @menu_product.destroy
-  redirect_to new_menu_path
+    @menu_product = MenuProduct.find(params[:id])
+    @menu_product.destroy
+    redirect_to new_menu_path
   end
 
   private

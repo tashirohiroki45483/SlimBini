@@ -1,8 +1,8 @@
 <div class="container shadow">
-  <p class="notice"><%= notice %></p>
-  <div class="row">
-    <h5 class=" mb-4"><strong>献立一覧</strong></h5>
-    <div><%= link_to "新規献立登録", new_menu_path, class: "btn btn-primary" %></div>
+  <%= render 'layouts/notice' %>
+  <div class="row justify-content-between">
+    <h4 class=" mb-4">献立一覧</h4>
+    <div><%= link_to "献立新規作成", new_menu_path, class: "btn btn-primary" %></div>
   </div>
   <div class="row">
     <div class="col-3">
