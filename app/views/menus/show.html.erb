@@ -73,15 +73,13 @@
       <%= render 'menu_comments/comments_area', menu: @menu %>
     </div>
   </div>
-  <div class="">
-    <div class="input-group">
-      <%= render 'menu_comments/comment_create', menu: @menu %>
-    </div>
+  <div>
+    <%= render 'menu_comments/comment_create', menu: @menu %>
   </div>
   <div class="row">
     <div class="col-md-12">
       <% if @menu.user_id == current_user.id %>
-        <%= link_to 'この献立を削除する', menu_path(@menu), method: :delete, data: { confirm: '本当に削除しますか?' }, class: 'btn btn-danger' %>
+        <%= link_to 'この献立を削除する', menu_path(@menu), method: :delete, data: { confirm: '本当に削除しますか?' }, class: 'btn btn-danger btn-sm mt-5' %>
       <% end %>
     </div>
   </div>
