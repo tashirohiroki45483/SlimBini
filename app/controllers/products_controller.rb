@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   def index
     @q = Product.ransack(params[:q]) #ransackで検索された商品を表示
-    @products = @q.result(distinct: true)
+    @products = @q.result(distinct: true).page(params[:page]).per(10) #ページネーション
     @menu_product = MenuProduct.new
   end
 

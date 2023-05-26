@@ -4,7 +4,7 @@ class MenusController < ApplicationController
 
   def index
     @q = Menu.ransack(params[:q]) #ransackで検索された献立を表示する
-    @menus = @q.result(distinct: true).order(created_at: :desc) #orderで新しく作成したものを上に表示させる
+    @menus = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(9) #orderで新しく作成したものを上に表示させる #ページネーション
   end
 
   def show
