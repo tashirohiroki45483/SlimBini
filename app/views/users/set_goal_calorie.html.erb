@@ -1,18 +1,19 @@
 <div class="container shadow">
+  <%= render 'layouts/notice' %>
   <h4 class=" mb-4">目標摂取カロリーを設定</h4>
   <%= form_with url: update_goal_calorie_user_path, method: :patch do |f| %>
   <table class="mx-auto">
     <tr>
       <td><%= f.label :weight, "体重" %></td>
-      <td><%= f.number_field :weight, placeholder: "体重を入力" %>(kg)</td>
+      <td><%= f.number_field :weight, placeholder: "体重を入力", required: true %>(kg)</td>
     </tr>
     <tr>
       <td><%= f.label :height, "身長" %></td>
-      <td><%= f.number_field :height, placeholder: "身長を入力" %>(cm)</td>
+      <td><%= f.number_field :height, placeholder: "身長を入力", required: true %>(cm)</td>
     </tr>
     <tr>
       <td><%= f.label :age, "年齢" %></td>
-      <td><%= f.number_field :age, placeholder: "年齢を入力" %></td>
+      <td><%= f.number_field :age, placeholder: "年齢を入力", required: true %></td>
     </tr>
     <tr>
       <td><%= f.label :gender, "性別" %></td>
@@ -28,7 +29,7 @@
     </tr>
   </table>
   <% end %>
-  <p class="alert alert-info mt-3">
+  <p class="alert alert-warning mt-3">
     この計算結果はミフリン・セント・ジョール方程式に基づいています。
     計算には入力した体重、身長、年齢、性別、活動レベルが考慮されますが保存はされません。
     目標摂取カロリーには月に1kg減量を目指すと仮定した場合のものが設定されます。<br>

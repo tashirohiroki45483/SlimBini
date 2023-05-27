@@ -17,6 +17,9 @@ class UsersController < ApplicationController
   end
 
   def update_goal_calorie
+    if params[:weight].blank? || params[:height].blank? || params[:age].blank? #どれか１つでも空の場合はtureになり、returnが行われる
+      return redirect_to set_goal_calorie_user_path, notice: '体重、身長、年齢を入力してください。'
+    end
     weight = params[:weight].to_f # 入力された体重を数値型に変換(浮動小数点数)
     height = params[:height].to_f # 入力された体重を数値型に変換(浮動小数点数)
     age = params[:age].to_i # 入力された年齢を数値型に変換(整数)
