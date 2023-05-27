@@ -4,7 +4,7 @@
       <%= image_tag(menu.user.image.present? ? menu.user.image : 'default_image.png', size: "30x30") %>
       <%= menu.user.name %>
     </div>
-    <div class="card-body">
+    <div class="card-body" style="padding-bottom: 0px;">
       <% menu.products.each do |product| %>
         <%= image_tag product.image.present? ? product.image : product.genre.image, size: "50x50" %>
       <% end %>
@@ -29,6 +29,7 @@
             <%= render "likes/likes", menu: menu %>
           </div>
       </div>
+        <p class="text-muted mt-2"><%= menu.created_at.strftime('%Y/%m/%d') %></p>
     </div>
   </div>
 </div>
