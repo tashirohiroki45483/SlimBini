@@ -18,10 +18,10 @@
         <tr>
             <th scope="col">画像</th>
             <th scope="col">商品名</th>
-            <th scope="col">カロリー</th>
-            <th scope="col">タンパク質</th>
-            <th scope="col">脂質</th>
-            <th scope="col">脂質</th>
+            <th scope="col"><%= sort_link @q, :calories, 'カロリー' %></th>
+            <th scope="col"><%= sort_link @q, :protein, 'タンパク質' %></th>
+            <th scope="col"><%= sort_link @q, :fat, '脂質'%></th>
+            <th scope="col"><%= sort_link @q, :carbohydrate, '炭水化物' %></th>
             <th scope="col"></th>
             <th scope="col"></th>
           </tr>
