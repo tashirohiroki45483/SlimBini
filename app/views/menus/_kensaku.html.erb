@@ -2,11 +2,10 @@
   <h7 class="card-title card-header text-center bg-info text-white">献立検索</h7>
   <div class="card-body">
   <%= search_form_for @q do |f| %>
-    <%= f.label :title_cont, "タイトル" %><br>
-    <%= f.search_field :title_cont %>
     <%= f.label :user_id_eq, "自分が投稿した献立", class: 'mt-2' %>
     <%= f.check_box :user_id_eq, {checked: false}, current_user.id, nil %>
-    <%= f.submit "検索", class: 'btn btn-info mt-2' %>
+    <%= f.submit "検索", class: 'btn btn-info mt-2' %><br>
+    <%= link_to "全件表示", menus_path, class: 'btn btn-success mt-2' %>
   <% end %>
   </div>
 </div>
