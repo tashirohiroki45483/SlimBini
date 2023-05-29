@@ -14,7 +14,7 @@
       <% total_carbohydrate = 0 %> <!-- 合計炭水化物を0で初期化 -->
       <% if @menu_products.present? %> <!-- @menu_productsが存在する場合 -->
         <% meal_order = ['朝食', '昼食', '夕食'] %>
-        <% @menu_products.group_by(&:meal_type).sort_by { |meal_type, _| meal_order.index(meal_type) }.each do |meal_type, menus| %> <!-- @menu_productsをmeal_typeでグルーピング、meal_orderでソート -->
+        <% @menu_products.group_by(&:meal_type).sort_by { |meal_type, _| meal_order.index(meal_type) }.each do |meal_type, menu_products| %> <!-- @menu_productsをmeal_typeでグルーピング、meal_orderでソート -->
           <div class="col-4">
             <div class="card mb-4 shadow-sm">
               <div class="card-header">
@@ -23,22 +23,22 @@
               <table class="table">
                 <tbody>
                   <% meal_type_calories = 0 %> <!-- 各meal_typeの合計カロリーを0で初期化 -->
-                  <% menus.each do |menu| %>
+                  <% menu_products.each do |menu_product| %>
                     <tr>
                       <td>
-                        <%= link_to product_path(menu.product_id) do %>
-                          <%= image_tag(menu.product.image.present? ? menu.product.image : menu.product.genre.image, size: "50x50") %>
+                        <%= link_to product_path(menu_product.product_id) do %>
+                          <%= image_tag(menu_product.product.image.present? ? menu_product.product.image : menu_product.product.genre.image, size: "50x50") %>
                         <% end %>
                       </td>
-                      <td><%= menu.product.name %></td>
-                      <td><%= menu.product.calories %> kcal</td>
-                      <td><%= link_to '削除', menu_product_path(menu.id), method: :delete, class: "btn btn-danger btn-sm" %></td>
+                      <td><%= menu_product.product.name %></td>
+                      <td><%= menu_product.product.calories %> kcal</td>
+                      <td><%= link_to '削除', menu_product_path(menu_product.id), method: :delete, class: "btn btn-danger btn-sm" %></td>
                     </tr>
-                    <% meal_type_calories += menu.product.calories %> <!-- 各meal_typeのカロリーを計算 -->
-                    <% total_calories += menu.product.calories %> <!-- 全体のカロリーを計算 -->
-                    <% total_protein += menu.product.protein %> <!-- 全体のタンパク質を計算 -->
-                    <% total_fat += menu.product.fat %> <!-- 全体の脂質を計算 -->
-                    <% total_carbohydrate += menu.product.carbohydrate %> <!-- 全体の炭水化物を計算 -->
+                    <% meal_type_calories += menu_product.product.calories %> <!-- 各meal_typeのカロリーを計算 -->
+                    <% total_calories += menu_product.product.calories %> <!-- 全体のカロリーを計算 -->
+                    <% total_protein += menu_product.product.protein %> <!-- 全体のタンパク質を計算 -->
+                    <% total_fat += menu_product.product.fat %> <!-- 全体の脂質を計算 -->
+                    <% total_carbohydrate += menu_product.product.carbohydrate %> <!-- 全体の炭水化物を計算 -->
                   <% end %>
                   <tr>
                     <td colspan="2"><strong>合計カロリー:</strong></td>
@@ -71,20 +71,7 @@
         </table>
       </div>
       <div class="col">
-        <table>
-          <tr>
-            <td><h5>タンパク質合計：</h5></td>
-            <td><h5><span class="badge rounded-pill bg-primary text-white"><%= total_protein.round(1) %>g</span></h5></td> <!-- 献立の合計タンパク質を表示 -->
-          </tr>
-          <tr>
-            <td><h5>脂質合計：</h5></td>
-            <td><h5><span class="badge rounded-pill bg-primary text-white"><%= total_fat.round(1) %>g</span></h5></td> <!-- 献立の合計脂質を表示 -->
-          </tr>
-          <tr>
-            <td><h5>炭水化物合計：</h5></td>
-            <td><h5><span class="badge rounded-pill bg-primary text-white"><%= total_carbohydrate.round(1) %>g</span></h5></td> <!-- 献立の合計炭水化物を表示 -->
-          </tr>
-        </table>
+        <%= render 'menus/menu_nutrient', total_protein: total_protein, total_fat: total_fat, total_carbohydrate: total_carbohydrate %>
       </div>
     </div>
     <div class="mt-3">

@@ -23,7 +23,7 @@
         <div class="col-4">
           <div class="card mb-4 shadow-sm">
             <div class="card-header">
-              <h5><%= meal_type %></h5>
+              <h5 class="mb-0"><%= meal_type %></h5>
             </div>
             <table class="table">
               <tbody>
@@ -71,20 +71,7 @@
       </table>
     </div>
     <div class="col">
-      <table>
-        <tr>
-          <td><h5>タンパク質合計：</h5></td>
-          <td><h5><span class="badge rounded-pill bg-primary text-white"><%= total_protein.round(1) %>g</span></h5></td> <!-- 献立の合計タンパク質を表示 -->
-        </tr>
-        <tr>
-          <td><h5>脂質合計：</h5></td>
-          <td><h5><span class="badge rounded-pill bg-primary text-white"><%= total_fat.round(1) %>g</span></h5></td> <!-- 献立の合計脂質を表示 -->
-        </tr>
-        <tr>
-          <td><h5>炭水化物合計：</h5></td>
-          <td><h5><span class="badge rounded-pill bg-primary text-white"><%= total_carbohydrate.round(1) %>g</span></h5></td> <!-- 献立の合計炭水化物を表示 -->
-        </tr>
-      </table>
+      <%= render 'menus/menu_nutrient', total_protein: total_protein, total_fat: total_fat, total_carbohydrate: total_carbohydrate %>
     </div>
   </div>
   <div class="row mt-3">
