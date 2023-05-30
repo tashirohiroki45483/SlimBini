@@ -19,7 +19,8 @@
       <% total_protein = 0 %> <!-- 合計タンパク質を0で初期化 -->
       <% total_fat = 0 %> <!-- 合計脂質を0で初期化 -->
       <% total_carbohydrate = 0 %> <!-- 合計炭水化物を0で初期化 -->
-      <% @menu.menu_products.group_by(&:meal_type).each do |meal_type, menu_products| %>
+      <% meal_order = ['朝食', '昼食', '夕食'] %>
+      <% @menu.menu_products.group_by(&:meal_type).sort_by { |meal_type, _| meal_order.index(meal_type) }.each do |meal_type, menu_products| %>
         <div class="col-4">
           <div class="card mb-4 shadow-sm">
             <div class="card-header">
