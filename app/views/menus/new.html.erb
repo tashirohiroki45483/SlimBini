@@ -15,7 +15,7 @@
       <% if @menu_products.present? %> <!-- @menu_productsが存在する場合 -->
         <% meal_order = ['朝食', '昼食', '夕食'] %>
         <% @menu_products.group_by(&:meal_type).sort_by { |meal_type, _| meal_order.index(meal_type) }.each do |meal_type, menu_products| %> <!-- @menu_productsをmeal_typeでグルーピング、meal_orderでソート -->
-          <div class="col-4">
+          <div class="col-md-4 col-sm-12">
             <div class="card mb-4 shadow-sm">
               <div class="card-header">
                 <h5 class="mb-0"><%= meal_type %></h5>
@@ -54,7 +54,7 @@
       <% end %>
     </div>
     <div class="row mt-5">
-      <div class="col">
+      <div class="col-md-6 col-sm-12">
         <table>
           <tr>
             <td><h5>目標摂取カロリー: </h5></td>
@@ -70,7 +70,7 @@
           </tr>
         </table>
       </div>
-      <div class="col">
+      <div class="col-md-6 col-sm-12">
         <%= render 'menus/menu_nutrient', total_protein: total_protein, total_fat: total_fat, total_carbohydrate: total_carbohydrate %>
       </div>
     </div>
