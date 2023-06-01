@@ -112,6 +112,10 @@ ActiveRecord::Schema.define(version: 2023_05_17_024834) do
     t.integer "user_id"
     t.string "title"
     t.text "description"
+    t.integer "total_calories"
+    t.float "total_protein"
+    t.float "total_fat"
+    t.float "total_carbohydrate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

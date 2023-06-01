@@ -1,4 +1,4 @@
-<div class="col-4">
+<div class="col-md-4 col-sm-12">
   <div class="card mb-4 shadow-sm">
     <div class="card-header">
       <%= image_tag(menu.user.image.present? ? menu.user.image : 'default_image.png', size: "30x30") %>
@@ -8,7 +8,7 @@
       <% menu.products.each do |product| %>
         <%= image_tag product.image.present? ? product.image : product.genre.image, size: "50x50" %>
       <% end %>
-      <h5 class="card-title pricing-card-title"><%= menu.products.sum(&:calories) %> kcal<small class="text-muted">/ total</small></h5>
+      <h5 class="card-title pricing-card-title"><%= menu.total_calories%> kcal<small class="text-muted">/ total</small></h5>
       <ul class="list-unstyled mt-3 mb-4">
         <li><%= menu.description %></li>
       </ul>
