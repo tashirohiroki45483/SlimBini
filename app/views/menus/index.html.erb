@@ -5,10 +5,10 @@
     <div><%= link_to "献立新規作成", new_menu_path, class: "btn btn-primary" %></div>
   </div>
   <div class="row">
-    <div class="col-3">
+    <div class="col-md-3 col-sm-12">
       <%= render 'menus/kensaku' %>
     </div>
-    <div class="col-9">
+    <div class="col-md-9 col-sm-12">
       <div class="row">
         <% if @menus.present? %>
           <% @menus.each do |menu| %>
