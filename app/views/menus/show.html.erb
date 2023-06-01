@@ -15,10 +15,6 @@
   </div>
   <div class="row">
     <% if @menu.menu_products.present? %>
-      <% total_calories = 0 %>
-      <% total_protein = 0 %> <!-- 合計タンパク質を0で初期化 -->
-      <% total_fat = 0 %> <!-- 合計脂質を0で初期化 -->
-      <% total_carbohydrate = 0 %> <!-- 合計炭水化物を0で初期化 -->
       <% meal_order = ['朝食', '昼食', '夕食'] %>
       <% @menu.menu_products.group_by(&:meal_type).sort_by { |meal_type, _| meal_order.index(meal_type) }.each do |meal_type, menu_products| %>
         <div class="col-4">
@@ -40,10 +36,6 @@
                     <td><%= menu_product.product.calories %> kcal</td>
                   </tr>
                   <% meal_type_calories += menu_product.product.calories %> <!-- 各meal_typeのカロリーを計算 -->
-                  <% total_calories += menu_product.product.calories %> <!-- 全体のカロリーを計算 -->
-                  <% total_protein += menu_product.product.protein %> <!-- 全体のタンパク質を計算 -->
-                  <% total_fat += menu_product.product.fat %> <!-- 全体の脂質を計算 -->
-                  <% total_carbohydrate += menu_product.product.carbohydrate %> <!-- 全体の炭水化物を計算 -->
                 <% end %>
                 <tr>
                   <td colspan="2"><strong>合計カロリー:</strong></td>
@@ -63,7 +55,7 @@
       <table>
         <tr>
           <td><h5>全てのカロリー合計: </h5></td>
-          <td><h5><span class="badge badge-primary"><%= total_calories %> kcal</span></h5></td>
+          <td><h5><span class="badge badge-primary"><%= @menu.total_calories %> kcal</span></h5></td>
         </tr>
         <tr>
           <td><h5><%= @menu.user.name%>さんの目標摂取カロリー: </h5></td>
@@ -72,7 +64,7 @@
       </table>
     </div>
     <div class="col">
-      <%= render 'menus/menu_nutrient', total_protein: total_protein, total_fat: total_fat, total_carbohydrate: total_carbohydrate %>
+      <%= render 'menus/menu_nutrient', total_protein: @menu.total_protein, total_fat: @menu.total_fat, total_carbohydrate: @menu.total_carbohydrate %>
     </div>
   </div>
   <div class="row mt-3">

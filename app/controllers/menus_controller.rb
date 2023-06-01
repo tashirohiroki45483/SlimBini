@@ -13,25 +13,26 @@ class MenusController < ApplicationController
 
   def new
     @menu = Menu.new
-    @menu_products = current_user.menu_products.where("menu_id is null")
+    @menu_products = current_user.menu_products.where(menu_id: nil)
   end
 
   def create
     @menu = current_user.menus.new(menu_params)
-    @menu_products = current_user.menu_products.where("menu_id is null")
-    # menup_productsが存在しない場合、新規献立作成にリダイレクトさせる
-    if @menu_products.empty?
+    @menu_products = current_user.menu_products.where(menu_id: nil) #menu_idがnilのcurrent_userのmenu_productsを探して@menu_productsに入れる
+    if @menu_products.empty? # @menu_productsが存在しない場合、新規献立作成にリダイレクトさせる
       flash[:notice] = '献立を投稿する前に商品を追加してください。'
       redirect_to new_menu_path
       return #メソッドの実行を終了させる
     end
     if @menu.save
-      # menu_idがnullの全てのMenuProductsのmenu_idを更新します
-      @menu_products.update_all(menu_id: @menu.id)
+      # menu_idがnullの全てのMenuProductsのmenu_idを更新する
+      @menu_products.each do |menu_product|
+        menu_product.update(menu_id: @menu.id)
+      end
       flash[:notice] = '献立が投稿されました。'
       redirect_to menu_path(@menu)
     else
-      render :new
+      render new_menu_path
     end
   end
 
@@ -44,7 +45,7 @@ class MenusController < ApplicationController
   private
 
   def menu_params
-    params.require(:menu).permit(:title, :description)
+    params.require(:menu).permit(:title, :description, :total_calories, :total_protein, :total_fat, :total_carbohydrate)
   end
 
   #ゲストログイン制限
