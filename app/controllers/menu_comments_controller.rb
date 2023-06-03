@@ -5,6 +5,7 @@ class MenuCommentsController < ApplicationController
   def create
     @menu = Menu.find(params[:menu_id])
     @comment = @menu.menu_comments.create(menu_comment_params)
+    @comment.score = Language.get_data(menu_comment_params[:comment])  #Google Natural Language API (自然言語処理)でscoreを自動生成
     @comment.user = current_user
     @comment.save
   end
