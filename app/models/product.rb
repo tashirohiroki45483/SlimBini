@@ -2,8 +2,10 @@ class Product < ApplicationRecord
   before_validation :set_default_values #バリデーション前のアクション
 
   has_many :menus
-  has_many :menu_products
+  has_many :menu_products, dependent: :destroy
   has_many :menus, through: :menu_products
+  has_many :taggings, dependent: :destroy
+  has_many :tags, through: :taggings
   belongs_to :user, optional: true
   belongs_to :genre
 

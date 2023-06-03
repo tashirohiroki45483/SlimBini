@@ -15,6 +15,9 @@
       <%= form_with model: @product do |f| %>
         <table>
           <tr>
+            <td>商品画像のファイルをせたくしなかった場合ジャンルの画像が表示されます。</td>
+          </tr>
+          <tr>
             <td width="140" style="padding-bottom: 10px;">商品画像</td>
             <td style="padding-bottom: 10px;"><%= f.file_field :image, accept: "image/*" %></td>
           </tr>
