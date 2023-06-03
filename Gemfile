@@ -63,7 +63,7 @@ gem 'rails-i18n' #railsの日本語化
 
 gem 'ransack' #検索機能
 
-gem 'dotenv-rails'
+gem 'dotenv-rails' #環境変数を扱う
 group :production do
   gem 'mysql2'
 end
