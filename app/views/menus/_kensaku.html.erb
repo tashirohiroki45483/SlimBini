@@ -1,7 +1,7 @@
 <div class="card">
   <h7 class="card-title card-header text-center bg-info text-white">献立検索</h7>
   <div class="card-body">
-  <%= search_form_for @q do |f| %>
+  <%= search_form_for q do |f| %>
     <%= f.label :total_calories_gteq, "合計カロリー（以上）", class: 'mt-2' %>
     <%= f.number_field :total_calories_gteq %>
     <%= f.label :total_calories_lteq, "合計カロリー（以下）", class: 'mt-2' %>
