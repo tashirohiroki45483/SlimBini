@@ -36,10 +36,10 @@
   </div>
   <% if @user.name != "guestuser" %>
   <div class="row mt-5">
-    <div class="col-2">
+    <div class="col-md-2 col-sm-12">
       <p><%= link_to "編集する", edit_user_registration_path, class: 'btn btn-success' %></p>
     </div>
-    <div class="col-10">
+    <div class="col-md-10 col-sm-12">
       <p><%= link_to "目標摂取カロリーを設定する", set_goal_calorie_user_path, class: 'btn btn-success' %></p>
     </div>
   </div>
