@@ -1,5 +1,5 @@
 class Menu < ApplicationRecord
-  
+
   has_many :bookmarks, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :menu_comments, dependent: :destroy

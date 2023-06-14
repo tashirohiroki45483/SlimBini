@@ -19,7 +19,7 @@
 - 自分の摂取カロリーを把握したいとき
 
 ## 設計書
-
+- ER図 https://app.diagrams.net/#G1zKjcbxLQuK2xs28kYr0_7ru8JVP75DAa
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -33,4 +33,4 @@
 - https://kotonohaworks.com/free-icons/
 - https://www.ac-illust.com/
 - 管理者の投稿するデータはこのサイトの使い方を学ぶためのダミーデータです、フリーのイラストとダミーの商品名とダミーの栄養素を使った商品を登録します。
-- ユーザーが商品登録する際は自分で撮影した画像を使用する
+- ユーザーが商品登録する際は自分で撮影した画像を使用してください。
