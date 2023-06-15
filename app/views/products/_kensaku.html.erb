@@ -3,11 +3,11 @@
   <div class="card-body">
   <%= search_form_for @q do |f| %>
     <%= f.label :name_cont, "商品名" %><br>
-    <%= f.search_field :name_cont %><br>
-    <%= f.label :calories_gteq, "カロリー（以上）", class: 'mt-2' %><br>
-    <%= f.number_field :calories_gteq %><br>
+    <%= f.search_field :name_cont, class: 'form-control' %><br>
+    <%= f.label :calories_gteq, "カロリー（以上）", class: 'mt-2' %>
+    <%= f.number_field :calories_gteq, class: 'form-control' %>
     <%= f.label :calories_lteq, "カロリー（以下）", class: 'mt-2' %><br>
-    <%= f.number_field :calories_lteq %><br>
+    <%= f.number_field :calories_lteq, class: 'form-control' %><br>
     <%= f.label :user_id_eq, "自分が投稿した商品", class: 'mt-2' %>
     <%= f.check_box :user_id_eq, {checked: false}, current_user.id, nil %><br>
     <%= f.label :genre_id_eq, 'ジャンルで絞り込む', class: 'mt-2' %>

@@ -1,38 +1,35 @@
 <div class="container shadow">
   <%= render 'layouts/notice' %>
-  <div class="row my-1 mt-5">
-    <div class="col">
-      <h4>登録情報</h4>
-    </div>
+  <h4 class="head-line mt-2 mb-5">登録情報</h4>
+  <h5 class="title">
+    プロフ画像
+  </h5>
+  <div class="profile-image mt-3 mb-4">
+    <% if @user.image.attached? %>
+      <%= image_tag @user.image, size: "100x100" %>
+    <% else %>
+      <p>プロフィール画像がありません</p>
+    <% end %>
   </div>
-  <div class="row">
-    <div class="col-7">
-      <table class="table table-bordered">
-        <tr>
-          <td class="table-info border-dark">プロフ画像</td>
-          <td class="border-dark">
-            <% if @user.image.present? %>
-              <%= image_tag @user.image, size: "100x100" %>
-            <% else %>
-              <p>プロフィール画像がありません</p>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-        <tr>
-          <td class="table-info border-dark">名前</td>
-          <td class="border-dark"><%= @user.name %></td>
-        </tr>
-        <tr>
-          <td class="table-info border-dark">メールアドレス</td>
-          <td class="border-dark"><%= @user.email %></td>
-        </tr>
-        <tr>
-          <td class="table-info border-dark">目標摂取カロリー</td>
-          <td class="border-dark"><%= @user.goal_calorie %>kcal</td>
-        </tr>
-      </table>
-    </div>
+  <h5 class="title">
+    名前
+  </h5>
+  <div class="username mt-3 mb-4">
+    <%= @user.name %>
+  </div>
+
+  <h5 class="title">
+    メールアドレス
+  </h5>
+  <div class="email mt-3 mb-4">
+    <%= @user.email %>
+  </div>
+
+  <h5 class="title">
+    目標摂取カロリー
+  </h5>
+  <div class="email mt-3 mb-4">
+    <%= @user.goal_calorie.present? ? "#{@user.goal_calorie} kcal" : "未設定" %>
   </div>
   <% if @user.name != "guestuser" %>
   <div class="row mt-5">
