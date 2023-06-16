@@ -3,54 +3,106 @@
   <div class="row">
     <div class="mx-auto">
       <%= form_with model: @product, url: product_path(@product), html: { method: :patch } do |f| %>
-        <table>
-          <tr>
-            <td></td>
-            <td>
-              <% if @product.image.present? %>
-              <div class="mt-3">現在の商品画像：<br>
+        <% if @product.image.present? %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 d-flex align-items-center justify-content-center justify-content-md-end">
+              <div class="">現在の商品画像：</div>
+            </div>
+            <div class="col-md-8 d-flex align-items-center justify-content-center">
               <%= image_tag @product.image, size: "100x100" %>
-              </div>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td width="140" style="padding-bottom: 10px;">商品画像</td>
-            <td style="padding-bottom: 10px;"><%= f.file_field :image, accept: "image/*"%></td>
-          </tr>
-          <tr>
-            <td style="padding-bottom: 10px;">商品名</td>
-            <td style="padding-bottom: 10px;"><%= f.text_field :name, :size=>"30" %></td>
-          </tr>
-          <tr>
-            <td style="padding-bottom: 10px;">商品説明</td>
-            <td style="padding-bottom: 10px;"><%= f.text_area :description, :size=>"29" %></td>
-          </tr>
-          <tr>
-            <td style="padding-bottom: 10px;">ジャンル</td>
-            <td style="padding-bottom: 10px;"><%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: 'ジャンルを選択してください' %></td>
-          </tr>
-          <tr>
-            <td style="padding-bottom: 10px;">カロリー</td>
-            <td style="padding-bottom: 10px;"><%= f.text_field :calories , :size=>"30"%></td>
-          </tr>
-          <tr>
-            <td style="padding-bottom: 10px;">タンパク質</td>
-            <td style="padding-bottom: 10px;"><%= f.text_field :protein , :size=>"30"%></td>
-          </tr>
-          <tr>
-            <td style="padding-bottom: 10px;">脂質</td>
-            <td style="padding-bottom: 10px;"><%= f.text_field :fat , :size=>"30"%></td>
-          </tr>
-          <tr>
-            <td style="padding-bottom: 10px;">炭水化物</td>
-            <td style="padding-bottom: 10px;"><%= f.text_field :carbohydrate , :size=>"30"%></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><%= f.submit '変更を保存', class: 'btn btn-success' %></td>
-          </tr>
-        </table>
+            </div>
+          </div>
+        </div>
+        <% end %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 d-flex align-items-center justify-content-center justify-content-md-end">
+              <%= f.label :image, '商品画像', class: 'mb-3 mb-md-0' %>
+            </div>
+            <div class="col-md-8">
+              <%= f.file_field :image, accept: "image/*" %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 d-flex align-items-center justify-content-center justify-content-md-end">
+              <%= f.label :name, '商品名', class: 'mb-3 mb-md-0' %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 d-flex align-items-center justify-content-center justify-content-md-end">
+              <%= f.label :description, '商品説明', class: 'mb-3 mb-md-0' %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_area :description, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 d-flex align-items-center justify-content-center justify-content-md-end">
+              <%= f.label :genre_id, 'ジャンル', class: 'mb-3 mb-md-0' %>
+            </div>
+            <div class="col-md-8">
+              <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: 'ジャンルを選択してください', class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 d-flex align-items-center justify-content-center justify-content-md-end">
+              <%= f.label :calories, 'カロリー', class: 'mb-3 mb-md-0' %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :calories, class: 'form-control' %>
+              <span class="">kcal</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 d-flex align-items-center justify-content-center justify-content-md-end">
+              <%= f.label :protein, 'タンパク質', class: 'mb-3 mb-md-0' %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :protein,  class: 'form-control' %>g
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 d-flex align-items-center justify-content-center justify-content-md-end">
+              <%= f.label :fat, '脂質', class: 'mb-3 mb-md-0' %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :fat, class: 'form-control' %>g
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 d-flex align-items-center justify-content-center justify-content-md-end">
+              <%= f.label :carbohydrate, '炭水化物', class: 'mb-3 mb-md-0' %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :carbohydrate, class: 'form-control' %>g
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 mx-auto">
+              <%= f.submit "変更を保存", class: 'btn btn-success btn-block' %>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
