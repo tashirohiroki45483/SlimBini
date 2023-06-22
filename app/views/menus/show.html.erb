@@ -69,7 +69,7 @@
   </div>
   <div class="row mt-3">
     <% if @menu.description.present? %>
-      <h5>説明：<%= @menu.description %></h5>
+      <h5>説明：<%= simple_format(@menu.description) %></h5>
     <% end %>
   </div>
   <div class="mt-5">
