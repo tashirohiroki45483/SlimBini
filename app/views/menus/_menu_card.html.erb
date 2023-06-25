@@ -10,7 +10,7 @@
       <% end %>
       <h5 class="card-title pricing-card-title"><%= menu.total_calories%> kcal<small class="text-muted">/ total</small></h5>
       <ul class="list-unstyled mt-3 mb-4">
-        <li><%= menu.description %></li>
+        <li><%= menu.description.truncate(30) %></li>
       </ul>
       <div class="row">
         <div class="col">
