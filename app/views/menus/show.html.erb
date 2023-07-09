@@ -29,7 +29,7 @@
                   <tr>
                     <td>
                       <%= link_to product_path(menu_product.product_id) do %>
-                        <%= image_tag(menu_product.product.image.present? ? menu_product.product.image : menu_product.product.genre.image, size: "50x50") %>
+                        <%= image_tag(menu_product.product.image.present? ? menu_product.product.image : menu_product.product.genre.image, class: "index-img") %>
                       <% end %>
                     </td>
                     <td><%= menu_product.product.name %></td>
