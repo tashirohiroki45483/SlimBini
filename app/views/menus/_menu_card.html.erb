@@ -6,7 +6,7 @@
     </div>
     <div class="card-body" style="padding-bottom: 0px;">
       <% menu.products.each do |product| %>
-        <%= image_tag product.image.present? ? product.image : product.genre.image, size: "50x50" %>
+        <%= image_tag product.image.present? ? product.image : product.genre.image, class: "index-img" %>
       <% end %>
       <h5 class="card-title pricing-card-title"><%= menu.total_calories%> kcal<small class="text-muted">/ total</small></h5>
       <ul class="list-unstyled mt-3 mb-4">
